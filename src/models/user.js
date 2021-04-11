@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema({
 
 }, {timestamps: true});
 
-userSchema.virtual('password')
+userSchema.virtual('password')      //vertual properties don't exist in database
 .set(function(password) {
     this.hash_password = bcrypt.hashSync(password, 10);
 });
