@@ -1,6 +1,6 @@
 const {check, validationResult} = require('express-validator')
 
-exports.validationResult = [
+exports.validateSignupResult = [
 
     check('firstName')
     .notEmpty()
@@ -18,6 +18,19 @@ exports.validationResult = [
     .isLength({min:8})
     .withMessage('password must be at least 8 character')
 ]
+
+
+exports.validateSigninResult = [
+
+    check('email')
+    .isEmail()
+    .withMessage("plz.. enter valid email"),
+
+    check('password')
+    .isLength({min:8})
+    .withMessage('password must be at least 8 character')
+]
+
 
 exports.isRequestValidated = (req, res, next)=>{
     const errors = validationResult(req)
